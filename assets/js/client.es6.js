@@ -322,6 +322,12 @@ function initialize(bindLinks) {
   // (bootstrap) on first load, so override state, and then set the proper
   // config value after render.
   beginRender = Date.now();
+
+  // If we're using an old render cache from a restore, nuke it
+  if ((beginRender - window.bootstrap.render) > 1000 * 60 * 5) {
+    app.setState('dataCache');
+  }
+
   app.render(window.bootstrap.ctx.url, true, modifyContext).then(function() {
     app.setState('dataCache');
 
