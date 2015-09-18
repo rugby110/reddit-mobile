@@ -66,7 +66,7 @@ class SideNav extends BaseComponent {
     var url = this.props.ctx.url;
     var query = '';
 
-    if (Object.keys(this.props.query).length > 0) {
+    if (Object.keys(this.props.ctx.query).length > 0) {
       query = '?' + querystring.stringify(this.props.ctx.query || {});
     }
 
