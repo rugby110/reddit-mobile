@@ -328,7 +328,7 @@ function initialize(bindLinks) {
     app.setState('dataCache');
   }
 
-  app.render(window.bootstrap.ctx.url, true, modifyContext).then(function() {
+  app.render(app.fullPathName(), true, modifyContext).then(function() {
     app.setState('dataCache');
 
     attachEvents();

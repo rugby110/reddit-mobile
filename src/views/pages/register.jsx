@@ -24,7 +24,7 @@ class RegisterPage extends BasePage {
     }
 
     if (this.props.ctx.query.error) {
-      switch (this.props.error) {
+      switch (this.props.ctx.query.error) {
         case 'EMAIL_NEWSLETTER':
           emailClass = 'has-error';
           message = 'Please enter an email if you wish to sign up to the newsletter.';
