@@ -40,19 +40,20 @@ class SubredditSelectionButton extends BaseComponent {
     options.query.q = newVal;
 
 
-    api.search.get(options).then(function (data) {
-      data = data || {};
-      if (data.data && data.data.subreddits) {
-        var newSubs = data.data.subreddits.map((sub) => {
+    api.search.get(options).then(function (data={}) {
+      if (data.body && data.body.subreddits) {
+        var newSubs = data.body.subreddits.map((sub) => {
           return {
             display_name: sub.display_name,
             icon_img: sub.icon_img,
             icon_size: sub.icon_size,
             submit_text: sub.submit_text,
-
           };
         });
-        this.setState({subs: newSubs, loaded: true});
+
+        this.setState({
+          subs: newSubs, loaded: true
+        });
       }
     }.bind(this));
     this.setState({loaded: false});
